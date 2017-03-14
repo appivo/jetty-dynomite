@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.appivo.jetty</groupId>
+    <artifactId>jetty-dynomite</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.2</version>
+    <name>jetty-dynomite</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <jetty.version>9.4.2.v20170220</jetty.version>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Compiler Plugin to set JDK Compiler Configuration -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <!-- Plugin to include dependencies into JAR -->
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>9.4.2.v20170220</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+    		<groupId>com.netflix.dyno</groupId>
+    		<artifactId>dyno-jedis</artifactId>
+    		<version>1.5.7</version>
+		</dependency>
+    </dependencies>
+
+</project>
